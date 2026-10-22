@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Compose the M6 persistent boot object: raw m1n1 + kernel + device tree + initramfs + chosen variables.
+"""Compose the M6 boot object: raw m1n1 + kernel + device tree + initramfs + chosen variables.
 
-Payload layout (same bytes as the packager that booted the first M6 payload, in this order):
+Payload layout, in this order:
   m1n1.bin (padded to _payload_start) | Image.gz | dtb | initramfs.cpio.gz | "chosen.bootargs=...\\n" | 4 NUL bytes
 
 Refuses a device tree whose root compatible list lacks the board value that m1n1 matches (apple,j873g).
