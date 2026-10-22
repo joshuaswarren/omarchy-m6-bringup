@@ -16,7 +16,7 @@ Our initramfs mounts the root partition of the internal drive by device name, so
 | `panic=0` | Do not reboot after a panic, so the message stays on the screen. |
 | `idle=wfi`, `arm64.nowfxt` | Kept from our first boots. |
 | `nokaslr` | No kernel address randomisation. Easier to debug. |
-| `apple_mailbox.ascwrap_v8_cpu_control=1` | A parameter of the mailbox driver for the M6. That driver change is not in the public fork yet, so the argument has no effect there. |
+| `apple_mailbox.ascwrap_v8_cpu_control=1` | A parameter of the mailbox driver for the M6. That driver change is not in the kernel branch yet, so the argument has no effect there. |
 | `g_ncm.host_addr`, `g_ncm.dev_addr` | MAC addresses for a USB Ethernet gadget (CDC NCM) on the Mac's USB cable. It gives the Mac a network link to the second computer. Pick any locally administered addresses. |
 
 Do not add `maxcpus=1`. Earlier builds used it. All 12 CPUs start without it.

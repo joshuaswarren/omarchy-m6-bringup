@@ -1,15 +1,15 @@
 # Build the kernel
 
-The kernel fork is [joshuaswarren/linux-aurora](https://github.com/joshuaswarren/linux-aurora), branch `m6-bringup`. It is the public `omacom/linux-aurora` tree (branch `integration/aurora`) plus six M6 changes. See the README for what those changes are and what is not in the tree yet.
+The kernel repository is [joshuaswarren/linux-omarchy-m6](https://github.com/joshuaswarren/linux-omarchy-m6), branch `m6-bringup`. It holds the files of the public `omacom/linux-aurora` tree (branch `integration/aurora`, commit `a2d47f9263d7`) in one import commit, plus seven M6 commits. The history of the public tree is not included. See the README for what those changes are and what is not in the tree yet.
 
 ## Get the source
 
 ```sh
-git clone --branch m6-bringup https://github.com/joshuaswarren/linux-aurora.git
-cd linux-aurora
+git clone --depth 1 --branch m6-bringup https://github.com/joshuaswarren/linux-omarchy-m6.git
+cd linux-omarchy-m6
 ```
 
-The history is large. Add `--filter=blob:none` to the clone if you want a quick start.
+The tree is large. `--depth 1` keeps the download small.
 
 ## Configure
 

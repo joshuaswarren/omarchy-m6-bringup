@@ -2,7 +2,7 @@
 
 This repository holds the instructions and the helper tools for getting Omarchy to run on the Apple Mac mini with the M6 chip. It is experimental and unfinished. It is not an installer and it is not ready for daily use.
 
-The Linux kernel changes live in a separate fork, branch `m6-bringup` of [joshuaswarren/linux-aurora](https://github.com/joshuaswarren/linux-aurora). This repository covers everything around the kernel: how to build it, how to put a boot payload together, how to install to the internal NVMe drive, and what works today.
+The Linux kernel changes live in a separate repository, branch `m6-bringup` of [joshuaswarren/linux-omarchy-m6](https://github.com/joshuaswarren/linux-omarchy-m6). This repository covers everything around the kernel: how to build it, how to put a boot payload together, how to install to the internal NVMe drive, and what works today.
 
 ## Questions people ask
 
@@ -14,9 +14,9 @@ The Linux kernel changes live in a separate fork, branch `m6-bringup` of [joshua
 
 ## What works today
 
-This is what we see on our own Mac mini. Several rows depend on code that is not in the public fork yet; the last column says which.
+This is what we see on our own Mac mini. Several rows depend on code that is not in the kernel branch yet; the last column says which.
 
-| Part | Status | In the public fork |
+| Part | Status | In the kernel branch |
 |---|---|---|
 | CPU | All 12 cores start. Frequency scaling works. | partly (loader change for CPU start only) |
 | Internal NVMe | Install and boot from the internal drive work. | partly (NVMe driver change only; it also needs a mailbox change that is not published yet) |
@@ -29,9 +29,9 @@ This is what we see on our own Mac mini. Several rows depend on code that is not
 | Sensors, fan, clock, power button | Temperatures, fan speed, the real-time clock and the power button work. | no |
 | Power off | The Mac restarts instead of powering off. | no |
 
-## What is in the public kernel fork
+## What is in the kernel branch
 
-The branch `m6-bringup` is built on the public `omacom/linux-aurora` tree (branch `integration/aurora`) and adds seven changes:
+The branch `m6-bringup` is the public `omacom/linux-aurora` tree (branch `integration/aurora`, commit `a2d47f9263d7`) plus seven changes:
 
 - a pin controller compatible string for the M6
 - the register layout of the M6 SART
@@ -47,7 +47,7 @@ It does not boot the machine by itself yet. These parts are not in the public tr
 
 | Path | What it is |
 |---|---|
-| [docs/build-kernel.md](docs/build-kernel.md) | Cross-build the kernel from the fork. |
+| [docs/build-kernel.md](docs/build-kernel.md) | Cross-build the kernel from the kernel branch. |
 | [docs/boot-payload.md](docs/boot-payload.md) | Put the loader, kernel, device tree and initramfs into one boot object. |
 | [docs/install.md](docs/install.md) | Install to the internal NVMe drive. |
 | [docs/boot-args.md](docs/boot-args.md) | The kernel command line we use, argument by argument. |
