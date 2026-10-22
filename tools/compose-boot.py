@@ -146,6 +146,9 @@ def main() -> None:
     variable = b"chosen.bootargs=" + line.encode("ascii") + b"\n"
 
     blob = m1n1 + kernel + dtb + initrd + variable + b"\0\0\0\0"
+    if a.m1n1:
+        blob += b"\0" * (-len(blob) % 16384)  # a raw boot object for kmutil must be a multiple of 16 KiB
+        assert len(blob) % 16384 == 0
     if capacity is not None and len(blob) - start > capacity:
         raise SystemExit(f"payload {len(blob) - start} bytes exceeds the Mach-O PYLD capacity {capacity}")
     a.out.write_bytes(blob)

@@ -36,6 +36,8 @@ python3 tools/compose-boot.py \
 
 `--kernel` takes a raw `Image` or an `Image.gz`. `--bootargs` is a file with one line and without the `chosen.bootargs=` prefix. The tool writes `<out>.json` next to the output with the size and the SHA-256 of every part.
 
+A raw boot object for `kmutil` must be a multiple of 16 KiB. The tool adds zero bytes at the end to reach that size, and the loader ignores them. We tested it on our Mac mini with an object of 61 MB. Without the padding the boot firmware showed the "needs to be reinstalled" alert and did not start the loader. The same bytes plus 15,143 zero bytes, which made the size a multiple of 16 KiB, started the loader and Linux.
+
 The tool refuses a device tree whose root `compatible` list does not contain `apple,j873g`, the board value the loader matches.
 
 ## Check a payload
