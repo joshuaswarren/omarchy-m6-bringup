@@ -19,7 +19,7 @@ This is what we see on our own Mac mini. Several rows depend on code that is not
 | Part | Status | In the public fork |
 |---|---|---|
 | CPU | All 12 cores start. Frequency scaling works. | partly (loader change for CPU start only) |
-| Internal NVMe | Install and boot from the internal drive work. | partly (NVMe driver change only) |
+| Internal NVMe | Install and boot from the internal drive work. | partly (NVMe driver change only; it also needs a mailbox change that is not published yet) |
 | Ethernet | The built-in 10 GbE port links at 10 Gb/s. iperf3 to another 10 GbE machine gave about 8.0 Gb/s sending and 9.1 Gb/s receiving. | no |
 | USB | Front ports (USB 2 speeds) and rear ports work. USB 3 speeds on the front hub are not done. | partly (USB 2 PHY driver, hub quirk, power domains) |
 | GPU | A kernel driver and Mesa work: OpenGL, Vulkan and compute smoke tests pass, and the Hyprland desktop renders on the GPU. | no |
@@ -31,7 +31,7 @@ This is what we see on our own Mac mini. Several rows depend on code that is not
 
 ## What is in the public kernel fork
 
-The branch `m6-bringup` is built on the public `omacom/linux-aurora` tree (branch `integration/aurora`) and adds six changes:
+The branch `m6-bringup` is built on the public `omacom/linux-aurora` tree (branch `integration/aurora`) and adds seven changes:
 
 - a pin controller compatible string for the M6
 - the register layout of the M6 SART
@@ -39,8 +39,9 @@ The branch `m6-bringup` is built on the public `omacom/linux-aurora` tree (branc
 - power domains for the M6 power state director
 - a USB 2 PHY driver for the fixed host ports
 - a USB hub quirk for the front-port hub
+- board device tree nodes for the GPIO controller and the USB power domains
 
-It does not boot the machine by itself yet. These parts are not in the public tree yet: the board device tree, the memory management, PCIe and USB controller changes, and the GPU, display and Wi-Fi drivers. We will add pieces as they are ready.
+It does not boot the machine by itself yet. These parts are not in the public tree yet: the mailbox change that NVMe needs, the NVMe, memory management, PCIe and USB controller nodes and changes, and the GPU, display and Wi-Fi drivers. We will add pieces as they are ready.
 
 ## What is in this repository
 
