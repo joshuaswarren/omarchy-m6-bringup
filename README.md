@@ -18,7 +18,7 @@ This is what we see on our own Mac mini. Several rows depend on code that is not
 
 | Part | Status | In the public fork |
 |---|---|---|
-| CPU | All 12 cores start. Frequency scaling works. | no (loader and device tree) |
+| CPU | All 12 cores start. Frequency scaling works. | partly (loader change for CPU start only) |
 | Internal NVMe | Install and boot from the internal drive work. | partly (NVMe driver change only) |
 | Ethernet | The built-in 10 GbE port links at 10 Gb/s. iperf3 to another 10 GbE machine gave about 8.0 Gb/s sending and 9.1 Gb/s receiving. | no |
 | USB | Front ports (USB 2 speeds) and rear ports work. USB 3 speeds on the front hub are not done. | partly (USB 2 PHY driver, hub quirk, power domains) |
@@ -62,7 +62,7 @@ It does not boot the machine by itself yet. These parts are not in the public tr
 ## Known limits
 
 - Everything here is tested on one machine. Other M6 Mac minis may differ.
-- The boot loader we use has changes that are not published yet. The public `aurora-silicon/m1n1` repository has basic M6 support on its `aurora-wip` branch. We have not tested the fork against that exact loader.
+- The boot loader we use has more changes than the ones we publish. The public `aurora-silicon/m1n1` repository has basic M6 support on its `aurora-wip` branch. Our CPU start change is on the `m6-bringup` branch of [joshuaswarren/m1n1](https://github.com/joshuaswarren/m1n1). It builds on `aurora-wip`. We built it there, but we have not booted that exact build. The rest of our loader changes come later.
 - Power off from Linux restarts the Mac. If you shut the Mac down from macOS, someone has to press the power button to start it again.
 - At the time of writing our boot flow starts Linux from a second computer over the USB cable. Starting Linux on its own is not set up yet.
 - You use these tools at your own risk. A wrong boot object can leave the Linux boot volume unbootable. Keep macOS reachable.

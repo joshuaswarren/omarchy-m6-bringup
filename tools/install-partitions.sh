@@ -3,8 +3,8 @@
 # Runs on the Mac mini in macOS or recoveryOS Terminal (bash 3.2, diskutil, plutil, curl, dd, newfs_msdos, tar, awk; shasum or sha256sum).
 # Nothing here changes the boot object or the boot policy. It only adds partitions after AFTER.
 #
-#   SERVER=http://<host>:<port>/<token> AFTER=disk0s3 sh install-partitions.sh --dry-run
-#   SERVER=... AFTER=disk0s3 REVIEWED=disk0s3 sh install-partitions.sh --go
+#   SERVER=http://<host>:<port>/<token> AFTER=disk0s3 bash install-partitions.sh --dry-run
+#   SERVER=... AFTER=disk0s3 REVIEWED=disk0s3 bash install-partitions.sh --go
 #
 # SERVER is the HTTP server from tools/image-server.py. Layout (from the image's installer metadata): ESP FAT32 500 MiB
 # (volume id 0x4f4d5801, which the image's fstab names), Boot 2 GiB (ext4, label OMARCHY_BOOT), Root btrfs (label OMARCHY_ROOT).
