@@ -1,5 +1,7 @@
 # Install to the internal NVMe drive
 
+> **These steps need a second computer and a USB cable.** A one-machine install is being worked out. Until then this document is a record of how the first M6 was brought up, and it is the wrong path for a normal install.
+
 This is what we do on our Mac mini. It is experimental. Read all of it before you start, and keep a second computer next to the Mac.
 
 macOS stays on the machine. The steps add three partitions after the existing containers and change the boot object of one small stub volume. They do not touch the macOS volume.

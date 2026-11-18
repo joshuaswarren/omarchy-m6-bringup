@@ -1,5 +1,7 @@
 # Omarchy on the Mac mini (M6): experimental bring-up
 
+> **These steps need a second computer and a USB cable.** A one-machine install is being worked out. Until then this repository is a record of how the first M6 was brought up, and it is the wrong path for a normal install.
+
 This repository holds the instructions and the helper tools for getting Omarchy to run on the Apple Mac mini with the M6 chip. It is experimental and unfinished. It is not an installer and it is not ready for daily use.
 
 The Linux kernel changes live in a separate repository, branch `m6-bringup` of [joshuaswarren/linux-omarchy-m6](https://github.com/joshuaswarren/linux-omarchy-m6). This repository covers everything around the kernel: how to build it, how to put a boot payload together, how to install to the internal NVMe drive, and what works today.
